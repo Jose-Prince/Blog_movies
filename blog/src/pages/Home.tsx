@@ -1,8 +1,13 @@
-import Screen from '../Components/Home/Screen'
+import FirstRow from '../Components/Home/FirstRow'
+import SecondRow from '../Components/Home/SecondRow'
+import './Home.css'
 
-function home() {
+const home: React.FC = () => {
     return (
-        <Screen />
+        <div className='home'>
+            <FirstRow />
+            <SecondRow />
+        </div>
     )
 }
 
