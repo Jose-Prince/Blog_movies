@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
-import Admin from './Components/Home/About'
+import Admin from './pages/Admin'
 import './App.css'
 
 const App: React.FC = () => {

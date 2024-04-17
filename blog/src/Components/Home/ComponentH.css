@@ -12,3 +12,23 @@
     background-color: white;
     filter: drop-shadow(0 0 50mm rgb(365, 365, 365)) 
 }
+
+#loginview {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#logButton {
+    height: 100%;
+    width: 15%;
+    line-height: 23px;
+    box-sizing: border-box;
+    margin: 5px;
+    padding: 1px;
+    z-index: 1;
+    background: #404040;
+    border-radius: 10px;
+}

@@ -1,5 +1,5 @@
 .home {
     height: 100%;
     display: grid;
-    grid-template-rows: 60% 40%;
+    grid-template-rows: 3% 57% 40%;
 }
