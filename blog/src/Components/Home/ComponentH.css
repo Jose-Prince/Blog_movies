@@ -23,7 +23,7 @@
 
 #logButton {
     height: 100%;
-    width: 15%;
+    width: 150px;
     line-height: 23px;
     box-sizing: border-box;
     margin: 5px;
@@ -32,3 +32,18 @@
     background: #404040;
     border-radius: 10px;
 }
+
+.overlay {
+    position: absolute; 
+    left: 80%;
+    top: 4%;
+    background-color: green;
+    width: 180px;
+    z-index: 2;
+}
+
+.botonSelect {
+    display: flex;
+    justify-content: space-evenly;
+}
+

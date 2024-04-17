@@ -1,34 +1,30 @@
 import { useState } from 'react'
 import './ComponentH.css'
-import { Link } from 'react-router-dom'
+import Data from './Data'
 
 interface ContainerProps {  }
 
 const Login: React.FC<ContainerProps> = () => {
 
     const [onHover, setOnHover] = useState(false)
+    const [data, setData] = useState(false)
 
     const color = onHover ? "blue" : "white"
 
-    const onMosueEnter = () => {
-        setOnHover(true)
-    }
-
-    const onMouseLeave = () => {
-        setOnHover(false)
-    }
-
     return (
         <div id="loginview">
-                <Link 
-                    to='/Admin' 
-                    onMouseEnter={onMosueEnter} 
-                    onMouseLeave={onMouseLeave}
+                <p 
+
+                    onMouseEnter={() =>setOnHover(true)} 
+                    onMouseLeave={() =>setOnHover(false)}
                     id='logButton'
                     style={{
                         color: onHover ? "blue" : "white",
                         border: '1px solid '+color
-                }}>Escoger nombre</Link>
+                }}
+                    onClick={() => setData(true)}
+                >Escoger nombre</p>
+                { data && <Data setData={setData}/>}
         </div>
     )
 }
