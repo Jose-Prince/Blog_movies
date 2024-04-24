@@ -1,6 +1,6 @@
 import React from 'react'
 import './ComponentH.css'
-import Buttons from './DataComponents/Buttons'
+import Buttons from './DataComponents/ButtonsH'
 import InputPassword from './DataComponents/Password/InputPassword'
 import InputUser from './DataComponents/Username/InputUser'
 
