@@ -1,0 +1,5 @@
+.admin {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 3% 53% 37% 3%;
+}

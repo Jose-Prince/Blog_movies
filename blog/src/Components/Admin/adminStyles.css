@@ -1,0 +1,10 @@
+.buttonsDesign {
+    height: 93%;
+    width: 99.7%;
+    background-color: black;
+    border: 1px solid #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white
+}
