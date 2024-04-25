@@ -5,6 +5,8 @@ import SecondRow from '../Components/Admin/SecondRow'
 import './Admin.css'
 import ButtonsA from '../Components/Admin/ButtonsA'
 import { useState } from 'react'
+import React from 'react'
+import ModalCreate from '../Components/ModalCreate/ModalCreate'
 
 const Admin: React.FC = () => {
     const [isCreateOpen, setIsCreateOpen] = useState(false)
@@ -16,6 +18,8 @@ const Admin: React.FC = () => {
             <FirstRow />
             <SecondRow />
             <ButtonsA setIsCreateOpen={setIsCreateOpen} setIsDeleteOpen={setIsDeleteOpen}/>
+            {isCreateOpen && <ModalCreate />}
+            {}
         </div>
     )
 }

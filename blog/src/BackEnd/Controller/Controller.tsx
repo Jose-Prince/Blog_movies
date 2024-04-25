@@ -1,5 +1,5 @@
 async function obtainMovies(){
-    const data = await fetch('http://127.0.0.1:3000/posts',
+    const data = await fetch('http://127.0.0.1:4500/posts',
     {
         method: 'GET',
         headers: {
@@ -11,7 +11,7 @@ async function obtainMovies(){
 }
 
 async function getAdmin(){
-    const data = await fetch('http://127.0.0.1:3000/admin',
+    const data = await fetch('http://127.0.0.1:4500/admin',
         {
             method: 'GET',
             headers: {
