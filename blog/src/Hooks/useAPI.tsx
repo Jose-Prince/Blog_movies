@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getAdmin, obtainMovies } from "../BackEnd/Controller/Controller";
+import { addMovie, getAdmin, obtainMovies } from "../BackEnd/Controller/Controller";
 
-function useAPI() {
+function useAPI(title, trailer, image, content) {
     const [movies, setMovies] = useState([])
     const [admin, setAdmin] = useState(null)
     const [error, setError] = useState(null)
@@ -24,7 +24,7 @@ function useAPI() {
         fetchData()
     }, [])
 
-    return { movies, admin, error}
+    return { movies, admin, error, addMovie}
 }
 
 export default useAPI

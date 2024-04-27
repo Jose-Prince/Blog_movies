@@ -18,7 +18,7 @@ const Admin: React.FC = () => {
             <FirstRow />
             <SecondRow />
             <ButtonsA setIsCreateOpen={setIsCreateOpen} setIsDeleteOpen={setIsDeleteOpen}/>
-            {isCreateOpen && <ModalCreate />}
+            {isCreateOpen && <ModalCreate setIsCreateOpen={setIsCreateOpen}/>}
             {}
         </div>
     )
