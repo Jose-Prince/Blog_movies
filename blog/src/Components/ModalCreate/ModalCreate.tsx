@@ -15,6 +15,7 @@ const ModalCreate: React.FC<ContainerProps> = ({ setIsCreateOpen }) => {
     const [name, setName] = useState('')
     const [trailer, setTrailer] = useState('')
     const [image, setImage] = useState('')
+    const [imgBase64, setImgBase64] = useState('')
     const [content, setContent] = useState('')
 
     return (
@@ -22,14 +23,14 @@ const ModalCreate: React.FC<ContainerProps> = ({ setIsCreateOpen }) => {
             <div className="contentDiv">
                 <Name name={name} setName={setName}/>
                 <Trailer trailer={trailer} setTrailer={setTrailer}/>
-                <Image image={image} setImage={setImage}/>
+                <Image image={image} setImage={setImage} setImgBase64={setImgBase64}/>
                 <Content content={content} setContent={setContent}/>
                 <ModalOptions setIsCreateOpen={setIsCreateOpen}
                     name={name}
                     setName={setName}
                     trailer={trailer}
                     setTrailer={setTrailer}
-                    image={image}
+                    image={imgBase64}
                     setImage={setImage}
                     content={content}
                     setContent={setContent}/>

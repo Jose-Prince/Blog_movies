@@ -4,9 +4,10 @@ import '../../ModalCreate/modalStyle.css'
 interface ContainerProps { 
     image : string
     setImage: (image: string) => void
+    setImgBase64: (imgBase64: string) => void
  }
 
-const Image: React.FC<ContainerProps> = ({image, setImage}) => {
+const Image: React.FC<ContainerProps> = ({image, setImage, setImgBase64}) => {
 
     const handleFileUpload = (event) => {
         const file = event.target.files[0]
@@ -17,6 +18,8 @@ const Image: React.FC<ContainerProps> = ({image, setImage}) => {
             reader.onload = () => {
                 if (reader.result) {
                     console.log(reader.result.toString())
+                    setImage(file.name)
+                    setImgBase64(reader.result.toString())
                 }
             }
             reader.readAsDataURL(file)
@@ -41,7 +44,7 @@ const Image: React.FC<ContainerProps> = ({image, setImage}) => {
                 <input
                     type="file"
                     accept="image/*"
-                    style={{ cursor: "pointer"}}
+                    style={{ cursor: "pointer", fontSize: '23px', width: '100%'}}
                     onChange={handleFileUpload}
                 ></input>
             </div>
