@@ -1,6 +1,6 @@
 import React from "react"
-import '../../ModalCreate/modalStyle.css'
-import useAPI from "../../../Hooks/useAPI"
+import '../modalStyle.css'
+import useAPI from "../../../../Hooks/useAPI"
 
 interface ContainerProps { 
     setIsCreateOpen: (isCreateOpen: boolean) => void
@@ -30,7 +30,11 @@ const ModalOptions: React.FC<ContainerProps> = ({
     const { addMovie } = useAPI()
 
     const handleClick = async () => {
-z        
+        console.log(name)  
+        console.log(trailer)  
+        console.log(image)  
+        console.log(content)      
+        await addMovie(name,trailer,image,content)  
         setName('')
         setTrailer('')
         setImage('')

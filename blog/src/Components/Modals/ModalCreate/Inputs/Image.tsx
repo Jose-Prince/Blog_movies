@@ -1,5 +1,5 @@
 import React from "react"
-import '../../ModalCreate/modalStyle.css'
+import '../modalStyle.css'
 
 interface ContainerProps { 
     image : string
@@ -30,6 +30,11 @@ const Image: React.FC<ContainerProps> = ({image, setImage, setImgBase64}) => {
         
     }
 
+    const onChangeLink = (e) => {
+        setImage(e.target.value)
+        setImgBase64(e.target.value)
+    }
+
     return (
         <div className="elementAlign">
             <p className="textIdentifier">Imagen: </p>
@@ -38,7 +43,7 @@ const Image: React.FC<ContainerProps> = ({image, setImage, setImgBase64}) => {
                 type="text" 
                 className="inputText"
                 maxLength={255}
-                onChange={(e) => setImage(e.target.value)}
+                onChange={onChangeLink}
             ></input>   
             <div>
                 <input

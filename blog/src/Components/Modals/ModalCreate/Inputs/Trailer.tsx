@@ -1,5 +1,5 @@
 import React from "react"
-import '../../ModalCreate/modalStyle.css'
+import '../modalStyle.css'
 
 interface ContainerProps {  
     trailer : string
