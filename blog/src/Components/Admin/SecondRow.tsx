@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Seat from '../../assets/Seat.svg'
 import useAPI from "../../Hooks/useAPI"
+import { useDoubleClick } from "../../Hooks/useDoubleCLick"
 
 interface ContainerProps { 
     setCountdownState: (countdownState : boolean) => void
@@ -10,17 +11,20 @@ interface ContainerProps {
 }
 
 const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCountdownState}) => {
-
+    
     const [startLoading, setStartLoading] = useState(false)
     const [mousePosition, setMousePosition] = useState({
         x: 0,
         y: 0
     })
     const [timeoutId, setTimeoutId] = useState<number | null>(null)
-    const [cursor, setCursor] = useState(false)
-
+    const [, setCursor] = useState(false)
+    
+    const [clickCounter, setClickCount] = useState(0);
+    const [dblclickCounter, setDblclickCount] = useState(0);
+    
     const {movies} = useAPI()
-
+    
     useEffect(() => {
         const mouseMove = (e) => {
             setMousePosition({
@@ -29,12 +33,13 @@ const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCoun
             })
         }
         window.addEventListener("mousemove", mouseMove)
-
+        
         return () => {
             window.removeEventListener("mousemove", mouseMove)
         }
     }, [])
-
+    
+    
     const handleMouseLeave = () => {
         setStartLoading(false)
         if (timeoutId) {
@@ -42,7 +47,14 @@ const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCoun
             setTimeoutId(null)
         }
     }
-
+    
+    const hybridClick = useDoubleClick(
+        () => console.log('Adios'),
+        () => console.log('Hello'),
+        undefined,
+        startLoading
+    )
+    
     const imageSource: string = Seat
 
     const imageElements: JSX.Element[] = []
@@ -94,6 +106,7 @@ const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCoun
 
         }
 
+
         imageElements.push(
             <div key={i}>
                 <img 
@@ -108,7 +121,7 @@ const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCoun
                         margin: '0 0px', // Reducir el espacio entre las imágenes
                     }} 
                 />
-                <div 
+                <button 
                 style={{
                     position: 'fixed',
                     height: '176px',
@@ -117,9 +130,13 @@ const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCoun
                     left: leftp + 241 +'px',
                     cursor: handleCursor(),
                     zIndex: '1',
+                    backgroundColor: 'transparent',
+                    borderColor: 'transparent'
                 }}
                 onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}></div>
+                onMouseLeave={handleMouseLeave}
+                onClick={hybridClick}
+                ></button>
                 
             </div>
         )
