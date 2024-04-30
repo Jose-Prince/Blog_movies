@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import video from '../../assets/Intro.mp4';
 import MovieContent from './MovieContent';
+import TrailerPlayer from './ContentComponents/TrailerPlayer';
+import useAPI from '../../Hooks/useAPI';
 
 interface ContainerProps { 
     index : number
+    playVideo: boolean
  }
 
-const Video : React.FC<ContainerProps> = ({index}) => {
+const Video : React.FC<ContainerProps> = ({index, playVideo}) => {
 
     const [screenContent, setScreenContent] = useState(false)
+    const {movieContent} = useAPI(index)
 
     useEffect(() => {
         setTimeout(() => {
@@ -24,7 +28,10 @@ const Video : React.FC<ContainerProps> = ({index}) => {
                 </video>
             }
             {
-                screenContent && <MovieContent index={index}/>
+                screenContent && !playVideo && <MovieContent index={index}/>
+            }
+            {
+                playVideo && <TrailerPlayer url={movieContent.trailer}/>
             }
         </>
 

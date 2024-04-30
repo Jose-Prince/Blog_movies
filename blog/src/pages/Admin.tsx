@@ -17,13 +17,33 @@ const Admin: React.FC = () => {
     const [countdownState, setCountdownState] = useState(false)
     const [replay, setReplay] = useState(false)
     const [index, setIndex] = useState<number>(34)
+    const [screenContent, setScreenContent] = useState(false)
+    const [playVideo, setPlayVideo] = useState(false)
 
     return (
         <div className='admin'>
             <Login />
-            <FirstRow index={index} replay={replay} countdownState={countdownState}/>
-            <SecondRow index={index} setIsEditOpen={setIsEditOpen} setIndex={setIndex} setReplay={setReplay} setCountdownState={setCountdownState}/>
-            <ButtonsA setIsCreateOpen={setIsCreateOpen} setIsDeleteOpen={setIsDeleteOpen}/>
+            <FirstRow 
+                index={index} 
+                replay={replay} 
+                countdownState={countdownState}
+                screenContent={screenContent}
+                setScreenContent={setScreenContent}
+                playVideo={playVideo}
+            />
+            <SecondRow 
+                index={index} 
+                setIsEditOpen={setIsEditOpen} 
+                setIndex={setIndex} 
+                setReplay={setReplay} 
+                setCountdownState={setCountdownState}
+                setScreenContent={setScreenContent}
+                setPlayVideo={setPlayVideo}
+            />
+            <ButtonsA 
+                setIsCreateOpen={setIsCreateOpen} 
+                setIsDeleteOpen={setIsDeleteOpen}
+            />
             {isCreateOpen && <ModalCreate setIsCreateOpen={setIsCreateOpen}/>}
             {isDeleteOpen && <ModalDelete setIsDeleteOpen={setIsDeleteOpen}/>}
             {isEditOpen && <ModalEdit index={index} setIsEditOpen={setIsEditOpen}/>}

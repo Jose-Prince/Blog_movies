@@ -9,9 +9,19 @@ interface ContainerProps {
     index: number | null
     setIndex: (index: number) => void
     setIsEditOpen: (isEditOpen: boolean) => void
+    setScreenContent: (screenContent : boolean) => void
+    setPlayVideo: (playVideo: boolean) => void
 }
 
-const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCountdownState, setIsEditOpen}) => {
+const secondRow: React.FC<ContainerProps> = ({
+    index, 
+    setIndex, 
+    setReplay,
+    setCountdownState, 
+    setIsEditOpen,
+    setScreenContent,
+    setPlayVideo,
+}) => {
     
     const [startLoading, setStartLoading] = useState(false)
     const [mousePosition, setMousePosition] = useState({
@@ -20,9 +30,6 @@ const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCoun
     })
     const [timeoutId, setTimeoutId] = useState<number | null>(null)
     const [, setCursor] = useState(false)
-    
-    const [clickCounter, setClickCount] = useState(0);
-    const [dblclickCounter, setDblclickCount] = useState(0);
     
     const {movies} = useAPI()
     
@@ -48,10 +55,15 @@ const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCoun
             setTimeoutId(null)
         }
     }
+
+    const handleOneClick = () => {
+        setScreenContent(false)
+        setPlayVideo(true)
+    }
     
     const hybridClick = useDoubleClick(
         () => setIsEditOpen(true),
-        () => console.log('Hello'),
+        handleOneClick,
         undefined,
         startLoading
     )
