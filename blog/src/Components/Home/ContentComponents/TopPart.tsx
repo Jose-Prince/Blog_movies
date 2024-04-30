@@ -13,9 +13,10 @@ const TopPart : React.FC<ContainerProps> = ({index}) => {
 
     return (
         <div className="topPart">
-            <button>{
-                movieContent.title
-            }</button>
+            <img 
+                src={movieContent.image} 
+                alt="Imagina una imagen para esta peli"
+                height='280'/>
             <TitleContent title={movieContent.title} content={movieContent.content}/>
         </div>
     )
