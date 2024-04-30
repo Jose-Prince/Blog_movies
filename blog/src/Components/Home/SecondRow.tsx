@@ -2,9 +2,10 @@ import React from 'react'
 import './ComponentH.css'
 import Seat from '../../assets/Seat.svg'
 
-interface ContainerProps {  }
-
-const secondRow: React.FC<ContainerProps> = () => {
+interface ContainerProps {
+    setCountdownState : (countdownState : boolean) => void
+}
+const SecondRow: React.FC<ContainerProps> = ({setCountdownState}) => {
 
     const imageSource: string = Seat
 
@@ -51,4 +52,4 @@ const secondRow: React.FC<ContainerProps> = () => {
     return <>{imageElements}</>
 }
 
-export default secondRow
+export default SecondRow

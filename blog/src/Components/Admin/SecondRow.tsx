@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react"
 import Seat from '../../assets/Seat.svg'
+import useAPI from "../../Hooks/useAPI"
 
-interface ContainerProps {  }
+interface ContainerProps { 
+    setCountdownState: (countdownState : boolean) => void
+    setReplay: (countdownState : boolean) => void
+    index: number | null
+    setIndex: (index: number) => void
+}
 
-const secondRow: React.FC<ContainerProps> = () => {
+const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCountdownState}) => {
 
     const [startLoading, setStartLoading] = useState(false)
     const [mousePosition, setMousePosition] = useState({
         x: 0,
         y: 0
     })
+    const [timeoutId, setTimeoutId] = useState<number | null>(null)
+    const [cursor, setCursor] = useState(false)
+
+    const {movies} = useAPI()
 
     useEffect(() => {
         const mouseMove = (e) => {
@@ -25,19 +35,13 @@ const secondRow: React.FC<ContainerProps> = () => {
         }
     }, [])
 
-    useEffect(() => {
-        let timeoutId
-        if (startLoading) {
-            timeoutId = setTimeout(() => {
-                console.log('Aqui estoy')
-                setStartLoading(false)
-            }, 3000)
+    const handleMouseLeave = () => {
+        setStartLoading(false)
+        if (timeoutId) {
+            window.clearTimeout(timeoutId)
+            setTimeoutId(null)
         }
-
-        return () => {
-            clearTimeout(timeoutId)
-        }
-    }, [startLoading])
+    }
 
     const imageSource: string = Seat
 
@@ -50,6 +54,44 @@ const secondRow: React.FC<ContainerProps> = () => {
         if (i % 8 == 0 && i != 0) {
             topp += 85.7
             leftp = -237
+
+        }
+
+        const handleCursor = () => {
+            if (i != index && i < movies.length){
+                return 'none'
+            } else if (i >= movies.length) {
+                return 'auto'
+            } else {
+                return 'pointer'
+            }
+        }
+    
+
+        const handleMouseEnter = () => {
+            if (i != index && i < movies.length) {
+                setCursor(false)
+                setStartLoading(true)
+                setReplay(true)
+                if (!timeoutId) {
+                    const id = window.setTimeout(() => {
+                        setCountdownState(false)
+                        setStartLoading(false)
+                        setReplay(false)
+                        setTimeoutId(null)
+                        console.log(i)
+                        setIndex(i)
+                        setCursor(true)
+                        setTimeout(() => {
+                            setCountdownState(true)
+                        }, 500);
+                    }, 3000)
+                    setTimeoutId(id)
+                }
+            } else {
+                setCursor(true)
+            }
+
         }
 
         imageElements.push(
@@ -73,11 +115,11 @@ const secondRow: React.FC<ContainerProps> = () => {
                     width: '234px',
                     top: topp + 373+'px',
                     left: leftp + 241 +'px',
-                    cursor: 'none',
+                    cursor: handleCursor(),
                     zIndex: '1',
                 }}
-                onMouseEnter={() => setStartLoading(true)}
-                onMouseLeave={() => setStartLoading(false)}></div>
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}></div>
                 
             </div>
         )

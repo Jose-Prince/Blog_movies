@@ -1,14 +1,21 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './ComponentH.css';
-import video from '../../assets/Intro.mp4';
+import Video from './Video';
 
-const Screen: React.FC = () => {
+interface ContainerProps { 
+  countdownState : boolean
+  index: number
+}
+
+const Screen: React.FC<ContainerProps> = ({countdownState, index}) => {
   // Se ejecuta una vez al montar el componente
 
   return (
-      <video  width='100%' height='100%' autoPlay id='screen'>
-        <source src={video} type='video/mp4' />
-      </video>
+    <>
+      {
+        countdownState && <Video index={index}/>
+      }
+    </>
   );
 };
 

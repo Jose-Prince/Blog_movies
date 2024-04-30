@@ -1,11 +1,16 @@
+import React from 'react'
 import Screen from './Screen'
 
-interface ContainerProps {  }
+interface ContainerProps { 
+    countdownState : boolean
+    replay: boolean
+    index: number
+}
 
-const firstRow: React.FC<ContainerProps> = () => {
+const firstRow: React.FC<ContainerProps> = ({index, countdownState}) => {
     return (
         <div className='position'>
-            <Screen />
+            <Screen index={index} countdownState={countdownState}/>
         </div>
     )
 }

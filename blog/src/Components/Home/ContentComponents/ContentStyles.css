@@ -1,0 +1,11 @@
+.topPart {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.titleContentDisplayment {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}

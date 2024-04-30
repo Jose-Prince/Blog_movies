@@ -51,9 +51,22 @@ async function deleteMovie(id){
     })
 }
 
+async function obtainMoviesContent(id){
+    const data = await fetch(`http://127.0.0.1:4500/posts/${id}`,
+    {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    const blog = await data.json()
+    return blog
+}
+
 export {
     obtainMovies, 
     getAdmin,
     addMovie,
     deleteMovie,
+    obtainMoviesContent,
 }

@@ -30,9 +30,26 @@ const Image: React.FC<ContainerProps> = ({image, setImage, setImgBase64}) => {
         
     }
 
-    const onChangeLink = (e) => {
+    const onChangeLink = async (e) => {
         setImage(e.target.value)
-        setImgBase64(e.target.value)
+        const base64 = await fetch(e.target.value)
+        .then(response => response.blob())
+        .then(blob => {
+            const reader = new FileReader()
+            reader.readAsDataURL(blob)
+            return new Promise((res) => {
+                reader.onloadend = () => {
+                    res(reader.result)
+                }
+            })
+        })
+        
+
+        if (typeof base64 === 'string') {
+            setImgBase64(base64);
+        } else {
+            console.error('El valor de base64 no es una cadena.');
+        }
     }
 
     return (

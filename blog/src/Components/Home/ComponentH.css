@@ -3,7 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: flex-end
+    align-items: center
 }
 
 #screen {
@@ -82,3 +82,9 @@
     color: white;
 }
 
+.MovieContentDisplay{
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: black;
+    filter: drop-shadow(0 0 50mm rgb(365, 365, 365)) 
+}

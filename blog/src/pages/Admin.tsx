@@ -12,12 +12,15 @@ import ModalDelete from '../Components/Modals/ModalDelete/ModalDelete'
 const Admin: React.FC = () => {
     const [isCreateOpen, setIsCreateOpen] = useState(false)
     const [isDeleteOpen, setIsDeleteOpen] = useState(false)
+    const [countdownState, setCountdownState] = useState(false)
+    const [replay, setReplay] = useState(false)
+    const [index, setIndex] = useState<number>(34)
 
     return (
         <div className='admin'>
             <Login />
-            <FirstRow />
-            <SecondRow />
+            <FirstRow index={index} replay={replay} countdownState={countdownState}/>
+            <SecondRow index={index} setIndex={setIndex} setReplay={setReplay} setCountdownState={setCountdownState}/>
             <ButtonsA setIsCreateOpen={setIsCreateOpen} setIsDeleteOpen={setIsDeleteOpen}/>
             {isCreateOpen && <ModalCreate setIsCreateOpen={setIsCreateOpen}/>}
             {isDeleteOpen && <ModalDelete setIsDeleteOpen={setIsDeleteOpen}/>}
