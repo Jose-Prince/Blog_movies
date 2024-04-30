@@ -8,10 +8,12 @@ import { useState } from 'react'
 import React from 'react'
 import ModalCreate from '../Components/Modals/ModalCreate/ModalCreate'
 import ModalDelete from '../Components/Modals/ModalDelete/ModalDelete'
+import ModalEdit from '../Components/Modals/ModalEdit/ModalEdit'
 
 const Admin: React.FC = () => {
     const [isCreateOpen, setIsCreateOpen] = useState(false)
     const [isDeleteOpen, setIsDeleteOpen] = useState(false)
+    const [isEditOpen, setIsEditOpen] = useState(false)
     const [countdownState, setCountdownState] = useState(false)
     const [replay, setReplay] = useState(false)
     const [index, setIndex] = useState<number>(34)
@@ -20,10 +22,12 @@ const Admin: React.FC = () => {
         <div className='admin'>
             <Login />
             <FirstRow index={index} replay={replay} countdownState={countdownState}/>
-            <SecondRow index={index} setIndex={setIndex} setReplay={setReplay} setCountdownState={setCountdownState}/>
+            <SecondRow index={index} setIsEditOpen={setIsEditOpen} setIndex={setIndex} setReplay={setReplay} setCountdownState={setCountdownState}/>
             <ButtonsA setIsCreateOpen={setIsCreateOpen} setIsDeleteOpen={setIsDeleteOpen}/>
             {isCreateOpen && <ModalCreate setIsCreateOpen={setIsCreateOpen}/>}
             {isDeleteOpen && <ModalDelete setIsDeleteOpen={setIsDeleteOpen}/>}
+            {isEditOpen && <ModalEdit index={index} setIsEditOpen={setIsEditOpen}/>}
+
         </div>
     )
 }

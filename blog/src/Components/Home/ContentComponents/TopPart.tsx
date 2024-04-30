@@ -9,7 +9,6 @@ interface ContainerProps {
 
 const TopPart : React.FC<ContainerProps> = ({index}) => {
 
-    const { movies } = useAPI()
     const {movieContent} = useAPI(index) 
 
     return (

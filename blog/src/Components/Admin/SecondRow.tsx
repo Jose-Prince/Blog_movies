@@ -8,9 +8,10 @@ interface ContainerProps {
     setReplay: (countdownState : boolean) => void
     index: number | null
     setIndex: (index: number) => void
+    setIsEditOpen: (isEditOpen: boolean) => void
 }
 
-const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCountdownState}) => {
+const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCountdownState, setIsEditOpen}) => {
     
     const [startLoading, setStartLoading] = useState(false)
     const [mousePosition, setMousePosition] = useState({
@@ -49,7 +50,7 @@ const secondRow: React.FC<ContainerProps> = ({index, setIndex, setReplay,setCoun
     }
     
     const hybridClick = useDoubleClick(
-        () => console.log('Adios'),
+        () => setIsEditOpen(true),
         () => console.log('Hello'),
         undefined,
         startLoading

@@ -1,3 +1,4 @@
+import React from 'react'
 import FirstRow from '../Components/Home/FirstRow'
 import Login from '../Components/Home/Login'
 import SecondRow from '../Components/Home/SecondRow'

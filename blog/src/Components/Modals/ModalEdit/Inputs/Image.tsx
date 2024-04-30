@@ -1,13 +1,14 @@
-import React from "react"
-import '../modalStyle.css'
+import React, { useState } from "react";
+import '../editStyles.css';
 
 interface ContainerProps { 
-    image : string
-    setImage: (image: string) => void
-    setImgBase64: (imgBase64: string) => void
- }
+    image: string;
+    setImage: (image: string) => void;
+    setImgBase64: (imgBase64: string) => void;
+}
 
 const Image: React.FC<ContainerProps> = ({image, setImage, setImgBase64}) => {
+    const [inputValue, setInputValue] = useState('');
 
     const handleFileUpload = (event) => {
         const file = event.target.files[0]
@@ -29,22 +30,27 @@ const Image: React.FC<ContainerProps> = ({image, setImage, setImgBase64}) => {
         console.log('URL de la imagen:',imageUrl)
         
     }
-
-    const onChangeLink =  (e) => {
-        setImage(e.target.value)
+    const onChangeLink =  (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.target.value);
+        setImage(e.target.value);
         setImgBase64(e.target.value);
-    }
+    };
 
+    const handleClick = () => {
+        setInputValue(image); // Establece el valor del input como el valor del placeholder al hacer clic
+    };
 
     return (
         <div className="elementAlign">
             <p className="textIdentifier">Imagen: </p>
             <input 
-                value={image}
+                placeholder={image}
                 type="text" 
                 className="inputText"
                 maxLength={255}
                 onChange={onChangeLink}
+                onClick={handleClick} // Maneja el clic en el input
+                value={inputValue}
             ></input>   
             <div>
                 <input
@@ -55,7 +61,7 @@ const Image: React.FC<ContainerProps> = ({image, setImage, setImgBase64}) => {
                 ></input>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Image
+export default Image;

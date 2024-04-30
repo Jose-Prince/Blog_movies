@@ -63,10 +63,29 @@ async function obtainMoviesContent(id){
     return blog
 }
 
+async function modifyMovie(title, trailer, image, music, content, id){
+    const body = {
+        title: title,
+        trailer: trailer,
+        image: image,
+        music: music,
+        content: content
+    }
+    const data = await fetch(`http://127.0.0.1:4500/posts/${id}`,
+    {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    })
+}
+
 export {
     obtainMovies, 
     getAdmin,
     addMovie,
     deleteMovie,
     obtainMoviesContent,
+    modifyMovie,
 }

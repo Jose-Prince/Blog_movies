@@ -17,6 +17,7 @@ const ModalCreate: React.FC<ContainerProps> = ({ setIsCreateOpen }) => {
     const [image, setImage] = useState('')
     const [imgBase64, setImgBase64] = useState('')
     const [content, setContent] = useState('')
+    const [music, setMusic] = useState('')
 
     return (
         <div id="shadow">
