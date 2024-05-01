@@ -3,13 +3,15 @@ import video from '../../assets/Intro.mp4';
 import MovieContent from './MovieContent';
 import TrailerPlayer from './ContentComponents/TrailerPlayer';
 import useAPI from '../../Hooks/useAPI';
+import MusicPlayer from './ContentComponents/MusicPlayer';
 
 interface ContainerProps { 
     index : number
     playVideo: boolean
- }
+    setPlayVideo: (playVideo: boolean) => void
+}
 
-const Video : React.FC<ContainerProps> = ({index, playVideo}) => {
+const Video : React.FC<ContainerProps> = ({index, playVideo, setPlayVideo}) => {
 
     const [screenContent, setScreenContent] = useState(false)
     const {movieContent} = useAPI(index)
@@ -31,8 +33,9 @@ const Video : React.FC<ContainerProps> = ({index, playVideo}) => {
                 screenContent && !playVideo && <MovieContent index={index}/>
             }
             {
-                playVideo && <TrailerPlayer url={movieContent.trailer}/>
+                playVideo && <TrailerPlayer url={movieContent.trailer} setPlayVideo={setPlayVideo}/>
             }
+            {/* <MusicPlayer /> */}
         </>
 
 

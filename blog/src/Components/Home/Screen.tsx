@@ -8,14 +8,14 @@ interface ContainerProps {
   screenContent: boolean
   setScreenContent : (screenContent: boolean) => void
   playVideo: boolean
+  setPlayVideo: (playVideo: boolean) => void
 }
 
 const Screen: React.FC<ContainerProps> = ({
   countdownState, 
   index,
-  setScreenContent,
-  screenContent,
-  playVideo
+  playVideo,
+  setPlayVideo
 }) => {
   // Se ejecuta una vez al montar el componente
 
@@ -25,6 +25,7 @@ const Screen: React.FC<ContainerProps> = ({
         countdownState && <Video 
           index={index}
           playVideo={playVideo}
+          setPlayVideo={setPlayVideo}
         />
       }
     </>

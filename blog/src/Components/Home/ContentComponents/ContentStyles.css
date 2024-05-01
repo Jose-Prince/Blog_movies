@@ -9,3 +9,26 @@
     flex-direction: column;
     align-content: flex-start;
 }
+
+#videoStyle {
+    max-height: 508px;
+    height: calc(100vw / 1.78);
+    max-width: 910px;
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
+    z-index: 5;
+}
+
+#shadowEffect {
+    position: absolute;
+    max-height: 508px;
+    height: calc(100vw / 1.78);
+    max-width: 910px;
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: black;
+    filter: drop-shadow(0 0 50mm rgb(365, 365, 365));
+    z-index: 0;
+}

@@ -8,6 +8,7 @@ interface ContainerProps {
     screenContent: boolean
     setScreenContent : (screenContent: boolean) => void
     playVideo: boolean
+    setPlayVideo: (playVideo: boolean) => void
 }
 
 const firstRow: React.FC<ContainerProps> = ({
@@ -15,7 +16,8 @@ const firstRow: React.FC<ContainerProps> = ({
     countdownState,
     screenContent,
     setScreenContent,
-    playVideo
+    playVideo,
+    setPlayVideo
 }) => {
     return (
         <div className='position'>
@@ -24,7 +26,8 @@ const firstRow: React.FC<ContainerProps> = ({
                 countdownState={countdownState}
                 screenContent={screenContent}
                 setScreenContent={setScreenContent}
-                playVideo={playVideo}/>
+                playVideo={playVideo}
+                setPlayVideo={setPlayVideo}/>
         </div>
     )
 }

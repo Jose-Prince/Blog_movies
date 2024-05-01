@@ -22,6 +22,10 @@ const ModalCreate: React.FC<ContainerProps> = ({ setIsCreateOpen }) => {
     return (
         <div id="shadow">
             <div className="contentDiv">
+                <div style={{width: '100%'}}>
+                    <button className='buttonsOptionsCreate'>Película</button>
+                    <button className='buttonsOptionsCreate'>Personas</button>
+                </div>
                 <Name name={name} setName={setName}/>
                 <Trailer trailer={trailer} setTrailer={setTrailer}/>
                 <Image image={image} setImage={setImage} setImgBase64={setImgBase64}/>

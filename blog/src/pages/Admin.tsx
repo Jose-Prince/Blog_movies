@@ -30,6 +30,7 @@ const Admin: React.FC = () => {
                 screenContent={screenContent}
                 setScreenContent={setScreenContent}
                 playVideo={playVideo}
+                setPlayVideo={setPlayVideo}
             />
             <SecondRow 
                 index={index} 

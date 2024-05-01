@@ -34,7 +34,7 @@ const secondRow: React.FC<ContainerProps> = ({
     const {movies} = useAPI()
     
     useEffect(() => {
-        const mouseMove = (e) => {
+        const mouseMove = (e: { clientX: any; clientY: any }) => {
             setMousePosition({
                 x: e.clientX,
                 y: e.clientY
@@ -72,13 +72,13 @@ const secondRow: React.FC<ContainerProps> = ({
 
     const imageElements: JSX.Element[] = []
 
-    let leftp  = -237
-    let topp = 115
+    let leftp  = -3
+    let topp = 480
 
     for (let i = 0; i < 32; i++) {
         if (i % 8 == 0 && i != 0) {
-            topp += 85.7
-            leftp = -237
+            topp += 90
+            leftp = -3
 
         }
 
@@ -129,8 +129,7 @@ const secondRow: React.FC<ContainerProps> = ({
                         zIndex: '0',
                         top: topp +'px',
                         left: leftp + 'px',
-                        width: '716px', 
-                        height: '720px',
+                        width: '246px', 
                         margin: '0 0px', // Reducir el espacio entre las imágenes
                     }} 
                 />
@@ -138,9 +137,9 @@ const secondRow: React.FC<ContainerProps> = ({
                 style={{
                     position: 'fixed',
                     height: '176px',
-                    width: '234px',
-                    top: topp + 373+'px',
-                    left: leftp + 241 +'px',
+                    width: '239px',
+                    top: topp +'px',
+                    left: leftp+3+'px',
                     cursor: handleCursor(),
                     zIndex: '1',
                     backgroundColor: 'transparent',
@@ -149,8 +148,8 @@ const secondRow: React.FC<ContainerProps> = ({
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 onClick={hybridClick}
-                ></button>
-                
+                >
+                </button>
             </div>
         )
         leftp += 240
@@ -162,7 +161,7 @@ const secondRow: React.FC<ContainerProps> = ({
         style={{
             position: 'fixed', 
             top: mousePosition.y -15,
-            left: mousePosition.x-18    
+            left: mousePosition.x-18,    
         }}/>}
     {imageElements}</>
 }
