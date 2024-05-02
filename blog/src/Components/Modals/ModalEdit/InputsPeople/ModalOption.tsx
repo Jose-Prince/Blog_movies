@@ -4,30 +4,34 @@ import useAPI from "../../../../Hooks/useAPI"
 
 interface ContainerProps { 
     setIsEditOpen: (isEditOpen: boolean) => void
-    name: string
-    trailer: string
-    image: string
-    content: string
-    music: string
+    nameP: string
+    setNameP: (nameP: string) => void
+    imageP: string
+    setImageP: (imageP: string) => void
+    role: string
+    setRole: (role: string) => void
     index: number
 }
 
 
-const ModalOptions: React.FC<ContainerProps> = ({ 
+const ModalOption: React.FC<ContainerProps> = ({ 
     setIsEditOpen,
-    name,
-    trailer,
-    image,
-    content,
-    music,
+    nameP,
+    setNameP,
+    imageP,
+    setImageP,
+    role,
+    setRole,
     index
 }) => {
 
-    const { modifyMovie } = useAPI()
+    const { addPerson } = useAPI()
 
     const handleClick = async () => {
-        await modifyMovie(name,trailer,image,music,content, index)  
-        setIsEditOpen(false)
+        await addPerson(nameP,role, index,imageP)  
+        setNameP('')
+        setImageP('')
+        setRole('')
     }
 
     return (
@@ -42,4 +46,4 @@ const ModalOptions: React.FC<ContainerProps> = ({
     )
 }
 
-export default ModalOptions
+export default ModalOption

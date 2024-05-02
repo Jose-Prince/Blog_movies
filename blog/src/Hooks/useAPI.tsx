@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { addMovie, getAdmin, obtainMovies, deleteMovie, obtainMoviesContent, modifyMovie} from "../BackEnd/Controller/Controller";
+import { addMovie, getAdmin, obtainMovies, deleteMovie, obtainMoviesContent, modifyMovie, addPerson, getPeople} from "../BackEnd/Controller/Controller";
 
 function useAPI(id : number) {
     const [movies, setMovies] = useState([])
@@ -39,7 +39,7 @@ function useAPI(id : number) {
         fetchData()
     }, [])
 
-    return { movies, admin, movieContent, error, addMovie, deleteMovie, modifyMovie}
+    return { movies, admin, movieContent, error, addMovie, deleteMovie, modifyMovie, addPerson, getPeople}
 }
 
 export default useAPI

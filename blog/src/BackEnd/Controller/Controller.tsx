@@ -41,6 +41,36 @@ async function addMovie(title: string, trailer: string, image: string, content: 
     )
 }
 
+async function addPerson(name: string, role: string, id : number, picture: string) {
+    const object = {
+        name: name,
+        role: role,
+        id: id,
+        picture: picture
+    }
+    
+    const data = await fetch(`http://172.233.155.162:4500/people`,
+        {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(object)
+        }
+    )
+}
+
+async function getPeople(id : number) {
+    const data = await fetch(`http://172.233.155.162:4500/people/${id}`,
+        {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }
+    )
+}
+
 async function deleteMovie(id : number){
     const data = await fetch(`http://172.233.155.162:4500/posts/${id}`,
     {
@@ -88,4 +118,6 @@ export {
     deleteMovie,
     obtainMoviesContent,
     modifyMovie,
+    addPerson,
+    getPeople
 }
