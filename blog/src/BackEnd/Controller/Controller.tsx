@@ -1,5 +1,5 @@
 async function obtainMovies(){
-    const data = await fetch('http://127.0.0.1:4500/posts',
+    const data = await fetch('http://172.233.155.162:4500/posts',
     {
         method: 'GET',
         headers: {
@@ -11,7 +11,7 @@ async function obtainMovies(){
 }
 
 async function getAdmin(){
-    const data = await fetch('http://127.0.0.1:4500/admin',
+    const data = await fetch('http://172.233.155.162:4500/admin',
         {
             method: 'GET',
             headers: {
@@ -30,7 +30,7 @@ async function addMovie(title: string, trailer: string, image: string, content: 
         image: image,
         content: content
     }
-    const data = await fetch('http://127.0.0.1:4500/posts',
+    const data = await fetch('http://172.233.155.162:4500/posts',
         {
             method: 'POST',
             headers: {
@@ -41,8 +41,8 @@ async function addMovie(title: string, trailer: string, image: string, content: 
     )
 }
 
-async function deleteMovie(id){
-    const data = await fetch(`http://127.0.0.1:4500/posts/${id}`,
+async function deleteMovie(id : number){
+    const data = await fetch(`http://172.233.155.162:4500/posts/${id}`,
     {
         method: 'DELETE',
         headers: {
@@ -51,8 +51,8 @@ async function deleteMovie(id){
     })
 }
 
-async function obtainMoviesContent(id){
-    const data = await fetch(`http://127.0.0.1:4500/posts/${id}`,
+async function obtainMoviesContent(id : number){
+    const data = await fetch(`http://172.233.155.162:4500/posts/${id}`,
     {
         method: 'GET',
         headers: {
@@ -63,7 +63,7 @@ async function obtainMoviesContent(id){
     return blog
 }
 
-async function modifyMovie(title, trailer, image, music, content, id){
+async function modifyMovie(title: string, trailer: string, image: string, music: string, content: string, id: number){
     const body = {
         title: title,
         trailer: trailer,
