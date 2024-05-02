@@ -11,6 +11,7 @@ function useAPI(id : number) {
         content: '',
         music: ''
     })
+    const [people, setPeople] = useState([])
     const [admin, setAdmin] = useState(null)
     const [error, setError] = useState(null)
 
@@ -29,6 +30,9 @@ function useAPI(id : number) {
                 if (id < moviesData.length){
                     const movieContentData = await obtainMoviesContent(ids[id])
                     setMovieContent(movieContentData)
+
+                    const peopleData = await getPeople(ids[id])
+                    setPeople(peopleData)
                 }
                 
             } catch (error) {
@@ -39,7 +43,7 @@ function useAPI(id : number) {
         fetchData()
     }, [])
 
-    return { movies, admin, movieContent, error, addMovie, deleteMovie, modifyMovie, addPerson, getPeople}
+    return { movies, people, admin, movieContent, error, addMovie, deleteMovie, modifyMovie, addPerson}
 }
 
 export default useAPI

@@ -1,6 +1,7 @@
 import React from "react"
 import './ComponentH.css'
 import TopPart from "./ContentComponents/TopPart"
+import BottomPart from "./ContentComponents/BottomPart"
 
 interface ContainerProps { 
     index: number
@@ -15,10 +16,13 @@ const MovieContent : React.FC<ContainerProps> = ({index}) => {
                 maxHeight: '508px',
                 height: 'calc(100vw / 1.78)',
                 maxWidth: '910px',
-                width: '100%'
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column'
             }}
         >
             <TopPart index={index}/>
+            <BottomPart index={index}/>
         </div>
     )
 }

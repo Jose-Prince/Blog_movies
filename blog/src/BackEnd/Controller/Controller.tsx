@@ -63,12 +63,14 @@ async function addPerson(name: string, role: string, id : number, picture: strin
 async function getPeople(id : number) {
     const data = await fetch(`http://172.233.155.162:4500/people/${id}`,
         {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 "Content-Type": "application/json"
             },
         }
     )
+    const people = await data.json()
+    return people
 }
 
 async function deleteMovie(id : number){
