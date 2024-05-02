@@ -36,7 +36,7 @@ const Video : React.FC<ContainerProps> = ({index, playVideo, setPlayVideo}) => {
                 playVideo && <TrailerPlayer url={movieContent.trailer} setPlayVideo={setPlayVideo}/>
             }
             {
-                screenContent && !playVideo && <MusicPlayer />
+                screenContent && !playVideo && <MusicPlayer index={index}/>
                 
             }
         </>
