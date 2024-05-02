@@ -9,6 +9,22 @@ const BottomPart: React.FC<ContainerProps> = ({index}) => {
 
     const { people } = useAPI(index)
 
+    const NameAdjustment = (name : string) => {
+        if (name.length > 16) {
+            return name.substring(0,12) + '...'
+        }
+
+        return name
+    }
+
+    const RoleAdjustment = (role : string) => {
+        if (role.length > 20) {
+            return role.substring(0,16) + '...'
+        }
+
+        return role
+    }
+
     return (
         <div style={{ display: 'flex'}}>
             {people.map((person) =>(
@@ -16,16 +32,17 @@ const BottomPart: React.FC<ContainerProps> = ({index}) => {
                     width: '112.5px',
                     height: '150px',
                     marginLeft: '7px',
-                    marginRight: '7px'
+                    marginRight: '7px',
+                    justifyContent: 'center'
                 }}>
                     <h5 style={{margin: '0'}}>
-                        {person.name}
+                        {NameAdjustment(person.name)}
                     </h5>
                     <h6 style={{margin: '0'}}>
-                        {person.role}
+                        {RoleAdjustment(person.role)}
                     </h6>
                     <img src={person.picture} 
-                        alt="IMagina una persona"
+                        alt="Imagina una persona"
                         height='150'/>
                 </div>
             ))}
