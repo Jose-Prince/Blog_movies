@@ -1,6 +1,6 @@
 import './ContentStyles.css'
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
 interface ContainerProps { 
   url: string

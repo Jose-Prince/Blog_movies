@@ -47,6 +47,11 @@ const ModalEdit: React.FC<ContainerProps> = ({index, setIsEditOpen}) => {
         
     }, [movieContent]);
 
+    useEffect(()=>{
+        console.log(image)
+        console.log(imgBase64P);
+    },[image, imgBase64P])
+
     return (
         <div id='shadow'>
             <div className='contentDiv'>

@@ -13,7 +13,7 @@ interface ContainerProps {
     setPlayVideo: (playVideo: boolean) => void
 }
 
-const secondRow: React.FC<ContainerProps> = ({
+const SecondRow: React.FC<ContainerProps> = ({
     index, 
     setIndex, 
     setReplay,
@@ -34,7 +34,7 @@ const secondRow: React.FC<ContainerProps> = ({
     const {movies} = useAPI()
     
     useEffect(() => {
-        const mouseMove = (e: { clientX: any; clientY: any }) => {
+        const mouseMove = (e: { clientX: number; clientY: number }) => {
             setMousePosition({
                 x: e.clientX,
                 y: e.clientY
@@ -166,4 +166,4 @@ const secondRow: React.FC<ContainerProps> = ({
     {imageElements}</>
 }
 
-export default secondRow
+export default SecondRow

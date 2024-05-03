@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { comparePasswords, hashPassword } from '../../../BackEnd/Hashing/PasswordHash'
 import useAPI from "../../../Hooks/useAPI"
 import { NavLink } from "react-router-dom"

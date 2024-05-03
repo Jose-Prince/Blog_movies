@@ -6,17 +6,13 @@ import './Admin.css'
 import ButtonsA from '../Components/Admin/ButtonsA'
 import { useEffect, useState } from 'react'
 import React from 'react'
-import ModalCreate from '../Components/Modals/ModalCreate/ModalCreate'
-import ModalDelete from '../Components/Modals/ModalDelete/ModalDelete'
-import ModalEdit from '../Components/Modals/ModalEdit/ModalEdit'
 import useAPI from '../Hooks/useAPI'
-import { comparePasswords } from '../BackEnd/Hashing/PasswordHash'
 import useForm from '../Hooks/useForm'
 
 const Admin: React.FC = () => {
 
     const { admin } = useAPI()
-
+    
     const [isCreateOpen, setIsCreateOpen] = useState(false)
     const [isDeleteOpen, setIsDeleteOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
@@ -25,6 +21,10 @@ const Admin: React.FC = () => {
     const [index, setIndex] = useState<number>(34)
     const [screenContent, setScreenContent] = useState(false)
     const [playVideo, setPlayVideo] = useState(false)
+    
+    const {formCreate} = useForm(index, setIsCreateOpen)
+    const {formDelete} = useForm(index, setIsDeleteOpen)
+    const {formEdit} = useForm(index, setIsEditOpen)
 
     useEffect(() => {
         const fakeUser = localStorage.getItem('fakeUser');
@@ -63,9 +63,9 @@ const Admin: React.FC = () => {
                 setIsCreateOpen={setIsCreateOpen} 
                 setIsDeleteOpen={setIsDeleteOpen}
             />
-            {isCreateOpen && useForm('create', index, setIsCreateOpen)}
-            {isDeleteOpen && useForm('delete', index, setIsDeleteOpen)}
-            {isEditOpen && useForm('modify', index, setIsDeleteOpen)}
+            {isCreateOpen && formCreate}
+            {isDeleteOpen && formDelete}
+            {isEditOpen && formEdit}
 
         </div>
     )

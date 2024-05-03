@@ -4,8 +4,7 @@ import Login from '../Components/Home/Login'
 import SecondRow from '../Components/Home/SecondRow'
 import './Home.css'
 
-const home: React.FC = () => {
-    const [isEditOpen, setIsEditOpen] = useState(false)
+const Home: React.FC = () => {
     const [countdownState, setCountdownState] = useState(false)
     const [replay, setReplay] = useState(false)
     const [index, setIndex] = useState<number>(34)
@@ -26,7 +25,6 @@ const home: React.FC = () => {
             />
             <SecondRow 
                 index={index} 
-                setIsEditOpen={setIsEditOpen} 
                 setIndex={setIndex} 
                 setReplay={setReplay} 
                 setCountdownState={setCountdownState}
@@ -37,4 +35,4 @@ const home: React.FC = () => {
     )
 }
 
-export default home
+export default Home

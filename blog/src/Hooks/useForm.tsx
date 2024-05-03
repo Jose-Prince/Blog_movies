@@ -2,20 +2,12 @@ import ModalCreate from "../Components/Modals/ModalCreate/ModalCreate"
 import ModalDelete from "../Components/Modals/ModalDelete/ModalDelete"
 import ModalEdit from "../Components/Modals/ModalEdit/ModalEdit"
 
-interface ContainerProps { 
-    type : string
-    index: number,
-    setState : (state: boolean) => void
- }
+function useForm(index : number, setState : (state : boolean) => void) {
+    const formCreate = <ModalCreate setIsCreateOpen={setState}/>
+    const formDelete = <ModalDelete setIsDeleteOpen={setState}/>
+    const formEdit = <ModalEdit index={index} setIsEditOpen={setState}/>
 
-function useForm(type : string, index : number, setState : (state : boolean) => void) {
-    if (type == 'create') {
-        return <ModalCreate setIsCreateOpen={setState}/>
-    } else if (type == 'delete') {
-        return <ModalDelete setIsDeleteOpen={setState}/>
-    } else if (type == 'modify') {
-        return <ModalEdit index={index} setIsEditOpen={setState}/>
-    }
+    return {formCreate, formDelete, formEdit}
 }
 
 export default useForm

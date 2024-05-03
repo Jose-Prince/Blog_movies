@@ -1,6 +1,3 @@
-//Custom Hook obtenido de Medium para implementar el uso de doble click
-//Se hicieron modificaciones para pasa rel código de JS a TS
-
 import { useCallback, useRef } from 'react';
 
 export const useDoubleClick = (doubleClick, click, timeout = 200, loading : boolean) => {
@@ -28,5 +25,5 @@ export const useDoubleClick = (doubleClick, click, timeout = 200, loading : bool
         if (!loading && event.detail % 2 === 0) {
             doubleClick(event);
         }
-    }, [click, doubleClick, timeout]);
+    }, [click, doubleClick, timeout, loading]); // Agrega 'loading' a la lista de dependencias
 };

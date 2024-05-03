@@ -30,7 +30,7 @@ async function addMovie(title: string, trailer: string, image: string, content: 
         image: image,
         content: content
     }
-    const data = await fetch('http://172.233.155.162:4500/posts',
+    await fetch('http://172.233.155.162:4500/posts',
         {
             method: 'POST',
             headers: {
@@ -49,7 +49,7 @@ async function addPerson(name: string, role: string, id : number, picture: strin
         picture: picture
     }
     
-    const data = await fetch(`http://172.233.155.162:4500/people`,
+    await fetch(`http://172.233.155.162:4500/people`,
         {
             method: 'POST',
             headers: {
@@ -74,7 +74,7 @@ async function getPeople(id : number) {
 }
 
 async function deleteMovie(id : number){
-    const data = await fetch(`http://172.233.155.162:4500/posts/${id}`,
+    await fetch(`http://172.233.155.162:4500/posts/${id}`,
     {
         method: 'DELETE',
         headers: {
@@ -102,7 +102,7 @@ async function modifyMovie(title: string, trailer: string, image: string, conten
         image: image,
         content: content
     }
-    const data = await fetch(`http://172.233.155.162:4500/posts/${id}`,
+    await fetch(`http://172.233.155.162:4500/posts/${id}`,
     {
         method: 'PUT',
         headers: {

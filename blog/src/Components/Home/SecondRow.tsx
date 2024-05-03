@@ -32,7 +32,7 @@ const SecondRow: React.FC<ContainerProps> = ({
     const {movies} = useAPI()
     
     useEffect(() => {
-        const mouseMove = (e: { clientX: any; clientY: any }) => {
+        const mouseMove = (e: { clientX: number; clientY: number }) => {
             setMousePosition({
                 x: e.clientX,
                 y: e.clientY

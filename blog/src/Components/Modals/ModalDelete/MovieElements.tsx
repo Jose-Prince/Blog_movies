@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import useAPI from "../../../Hooks/useAPI"
 import './ModalDelete.css'
 

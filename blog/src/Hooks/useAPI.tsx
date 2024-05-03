@@ -40,7 +40,7 @@ function useAPI(id : number) {
         }
 
         fetchData()
-    }, [])
+    }, [id])
 
     return { movies, people, admin, movieContent, error, addMovie, deleteMovie, modifyMovie, addPerson}
 }
