@@ -1,28 +1,50 @@
-import React, { useEffect, useState } from "react"
-import './ContentStyles.css'
-import TitleContent from "./TitleContent"
-import useAPI from "../../../Hooks/useAPI"
-import TrailerPlayer from "./TrailerPlayer"
+import React, { Suspense, useEffect, useState } from "react";
+import './ContentStyles.css';
+import TitleContent from "./TitleContent";
+import useAPI from "../../../Hooks/useAPI";
+import TopLoading from "../../LazyLoading/TopLoading";
 
-interface ContainerProps { 
-    index : number
+interface ContainerProps {
+    index: number;
 }
 
-const TopPart : React.FC<ContainerProps> = ({index}) => {
+// Componente de suspensión personalizado para mostrar un indicador de carga
+const Loader = () => <TopLoading />;
 
-    const {movieContent} = useAPI(index) 
+const TopPart: React.FC<ContainerProps> = ({ index }) => {
+    return (
+        <Suspense fallback={<Loader />}>
+            <TopPartContent index={index} />
+        </Suspense>
+    );
+};
+
+const TopPartContent: React.FC<ContainerProps> = ({ index }) => {
+    const { movieContent } = useAPI(index);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        // Simulamos la carga de datos aquí, podrías ajustar esto según tus necesidades reales
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (isLoading) {
+        return <Loader />;
+    }
 
     return (
-        <>
-            <div className="topPart">
-                <img 
-                    src={movieContent.image} 
-                    alt="Imagina una imagen para esta peli"
-                    height='280'/>
-                <TitleContent title={movieContent.title} content={movieContent.content}/>
-            </div>
-        </>
-    )
-}
+        <div className="topPart">
+            <img
+                src={movieContent.image}
+                height='280'
+            />
+            <TitleContent title={movieContent.title} content={movieContent.content} />
+        </div>
+    );
+};
 
-export default TopPart
+export default TopPart;

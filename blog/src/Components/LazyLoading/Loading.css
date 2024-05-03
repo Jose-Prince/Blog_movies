@@ -1,0 +1,49 @@
+#topLoader {
+    width: 100%;
+    height: 60%,;
+    display: flex;
+    justify-content: center;
+    padding: 10px
+}
+
+.imageLoad {
+    width: 189px;
+    height: 280px;
+    background-color: gray;
+    margin-right: 10px
+}
+
+.titleLoad {
+    width: 95%;
+    height:30%;
+    background-color: gray;
+    margin-bottom: 10px;
+}
+
+.contentLoad {
+    width: 95%;
+    height:10%;
+    background-color: gray;
+    margin: 3px;
+}
+
+#bottomLoader {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.textLoad {
+ width: 100px;
+ height: 20px;
+ background-color: gray;
+ margin: 5px;
+ margin-bottom: 0;
+}
+
+.pictureLoad {
+    width: 100px;
+    height: 150px;
+    background-color: gray;
+    margin-top: 5px;
+}
