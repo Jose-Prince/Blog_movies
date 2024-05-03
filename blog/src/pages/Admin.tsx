@@ -4,13 +4,18 @@ import Login from '../Components/Home/Login'
 import SecondRow from '../Components/Admin/SecondRow'
 import './Admin.css'
 import ButtonsA from '../Components/Admin/ButtonsA'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import React from 'react'
 import ModalCreate from '../Components/Modals/ModalCreate/ModalCreate'
 import ModalDelete from '../Components/Modals/ModalDelete/ModalDelete'
 import ModalEdit from '../Components/Modals/ModalEdit/ModalEdit'
+import useAPI from '../Hooks/useAPI'
+import { comparePasswords } from '../BackEnd/Hashing/PasswordHash'
 
 const Admin: React.FC = () => {
+
+    const { admin } = useAPI()
+
     const [isCreateOpen, setIsCreateOpen] = useState(false)
     const [isDeleteOpen, setIsDeleteOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
@@ -19,6 +24,18 @@ const Admin: React.FC = () => {
     const [index, setIndex] = useState<number>(34)
     const [screenContent, setScreenContent] = useState(false)
     const [playVideo, setPlayVideo] = useState(false)
+
+    useEffect(() => {
+        const fakeUser = localStorage.getItem('fakeUser');
+        if (fakeUser != null && admin != null) {
+            const parsedUser = JSON.parse(fakeUser);
+            const isAdminPasswordCorrect = parsedUser.password !== '' && parsedUser.password === admin.password;
+            if (!isAdminPasswordCorrect && parsedUser.name != admin.name) {
+                window.location.href = '/Home';
+            }
+        }
+    }, [admin]);
+    
 
     return (
         <div className='admin'>

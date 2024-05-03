@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import { comparePasswords, hashPassword } from '../../../BackEnd/Hashing/PasswordHash'
 import useAPI from "../../../Hooks/useAPI"
-import Admin from "../../Admin/SecondRow"
 import { NavLink } from "react-router-dom"
 
 interface ContainerProps { 

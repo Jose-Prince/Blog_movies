@@ -9,7 +9,7 @@ interface ContainerProps {
 const Content: React.FC<ContainerProps> = ({content, setContent}) => {
     const [inputValue, setInputValue] = useState('')
 
-    const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e) => {
         setInputValue(e.target.value)
         setContent(e.target.value)
     }
@@ -20,7 +20,7 @@ const Content: React.FC<ContainerProps> = ({content, setContent}) => {
             <textarea
                 className="contentArea"
                 placeholder={content}
-                onChange={(e) => setContent(e.target.value)}
+                onChange={handleChange}
                 onClick={() => setInputValue(content)}
                 value={inputValue}
             ></textarea>  

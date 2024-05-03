@@ -95,15 +95,14 @@ async function obtainMoviesContent(id : number){
     return blog
 }
 
-async function modifyMovie(title: string, trailer: string, image: string, music: string, content: string, id: number){
+async function modifyMovie(title: string, trailer: string, image: string, content: string, id: number){
     const body = {
         title: title,
         trailer: trailer,
         image: image,
-        music: music,
         content: content
     }
-    const data = await fetch(`http://127.0.0.1:4500/posts/${id}`,
+    const data = await fetch(`http://172.233.155.162:4500/posts/${id}`,
     {
         method: 'PUT',
         headers: {
@@ -111,6 +110,8 @@ async function modifyMovie(title: string, trailer: string, image: string, music:
         },
         body: JSON.stringify(body)
     })
+    console.log(body);
+    
 }
 
 export {

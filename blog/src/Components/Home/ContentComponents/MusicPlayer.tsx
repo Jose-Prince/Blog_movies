@@ -1,15 +1,14 @@
 import PlayMusic from '../../../Hooks/PlayMusic';
-import audio from '../../../assets/Songs/Fearless Hero (64).mp3'
 
 interface ContainerProps {
-  index: number
+  name: string
 }
 
-const MusicPlayer: React.FC<ContainerProps> = ({index}) => {
+const MusicPlayer: React.FC<ContainerProps> = ({name}) => {
 
   return (
       <audio autoPlay loop>
-        <source src={PlayMusic(index)} type='audio/mp3' />
+        <source src={PlayMusic(name)} type='audio/mp3' />
       </audio>
   );
 };

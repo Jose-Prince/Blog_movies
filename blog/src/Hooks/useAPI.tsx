@@ -9,7 +9,6 @@ function useAPI(id : number) {
         trailer: '',
         image: '',
         content: '',
-        music: ''
     })
     const [people, setPeople] = useState([])
     const [admin, setAdmin] = useState(null)

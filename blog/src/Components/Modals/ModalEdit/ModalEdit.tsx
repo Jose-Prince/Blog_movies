@@ -7,7 +7,6 @@ import Content from './Inputs/Content'
 import Image from './Inputs/Image'
 import ModalOptions from './Inputs/ModalOptions'
 import useAPI from '../../../Hooks/useAPI'
-import Music from './Inputs/Music'
 import NameP from './InputsPeople/NameP'
 import Role from './InputsPeople/Role'
 import ImageP from './InputsPeople/ImageP'
@@ -29,7 +28,6 @@ const ModalEdit: React.FC<ContainerProps> = ({index, setIsEditOpen}) => {
     const [image, setImage] = useState('')
     const [imgBase64, setImgBase64] = useState('')
     const [content, setContent] = useState('')
-    const [music, setMusic] = useState('')
     const [id, setId] = useState(0)
 
     //Person creation hooks
@@ -43,7 +41,6 @@ const ModalEdit: React.FC<ContainerProps> = ({index, setIsEditOpen}) => {
         setTrailer(movieContent.trailer || '');
         setImage(movieContent.image || '');
         setImgBase64(movieContent.image || '')
-        setMusic(movieContent.music || '');
         setContent(movieContent.content || '');
         setId(movieContent.id || 0)
         console.log(movieContent);
@@ -67,7 +64,6 @@ const ModalEdit: React.FC<ContainerProps> = ({index, setIsEditOpen}) => {
                         <Name name={movieContent.title} setName={setName}/>
                         <Trailer trailer={movieContent.trailer} setTrailer={setTrailer}/>
                         <Image image={movieContent.image} setImage={setImage} setImgBase64={setImgBase64}/>
-                        <Music music={movieContent.music} setMusic={setMusic}/>
                         <Content content={content} setContent={setContent}/>
                         <ModalOptions 
                             setIsEditOpen={setIsEditOpen}
@@ -75,7 +71,6 @@ const ModalEdit: React.FC<ContainerProps> = ({index, setIsEditOpen}) => {
                             trailer={trailer}
                             image={imgBase64}
                             content={content}
-                            music={music}
                             index={id}/>
                         </>
                 }

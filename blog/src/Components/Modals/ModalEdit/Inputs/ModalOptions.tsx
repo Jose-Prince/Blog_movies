@@ -8,7 +8,6 @@ interface ContainerProps {
     trailer: string
     image: string
     content: string
-    music: string
     index: number
 }
 
@@ -19,14 +18,13 @@ const ModalOptions: React.FC<ContainerProps> = ({
     trailer,
     image,
     content,
-    music,
     index
 }) => {
 
     const { modifyMovie } = useAPI()
 
     const handleClick = async () => {
-        await modifyMovie(name,trailer,image,music,content, index)  
+        await modifyMovie(name,trailer,image,content, index)  
         setIsEditOpen(false)
     }
 
