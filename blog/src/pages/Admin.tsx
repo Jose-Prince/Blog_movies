@@ -11,6 +11,7 @@ import ModalDelete from '../Components/Modals/ModalDelete/ModalDelete'
 import ModalEdit from '../Components/Modals/ModalEdit/ModalEdit'
 import useAPI from '../Hooks/useAPI'
 import { comparePasswords } from '../BackEnd/Hashing/PasswordHash'
+import useForm from '../Hooks/useForm'
 
 const Admin: React.FC = () => {
 
@@ -62,9 +63,9 @@ const Admin: React.FC = () => {
                 setIsCreateOpen={setIsCreateOpen} 
                 setIsDeleteOpen={setIsDeleteOpen}
             />
-            {isCreateOpen && <ModalCreate setIsCreateOpen={setIsCreateOpen}/>}
-            {isDeleteOpen && <ModalDelete setIsDeleteOpen={setIsDeleteOpen}/>}
-            {isEditOpen && <ModalEdit index={index} setIsEditOpen={setIsEditOpen}/>}
+            {isCreateOpen && useForm('create', index, setIsCreateOpen)}
+            {isDeleteOpen && useForm('delete', index, setIsDeleteOpen)}
+            {isEditOpen && useForm('modify', index, setIsDeleteOpen)}
 
         </div>
     )
