@@ -40,7 +40,14 @@ const TopPartContent: React.FC<ContainerProps> = ({ index }) => {
         <div className="topPart">
             <img
                 src={movieContent.image}
-                height='280'
+                style={{
+                    maxHeight: '297px',
+                    height: 'calc(55vw / 1.78)',
+                    maxWidth: '910px',
+                    width: '30%',
+                    minWidth: '1px'
+                }}
+                
             />
             <TitleContent title={movieContent.title} content={movieContent.content} />
         </div>
