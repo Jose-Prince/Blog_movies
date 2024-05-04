@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react"
+import { Suspense, useEffect, useRef, useState } from "react"
 import useAPI from "../../../Hooks/useAPI"
 import BottomLoading from "../../LazyLoading/BottomLoading"
 
@@ -20,6 +20,8 @@ const BottomPartContent: React.FC<ContainerProps> = ({ index })=> {
     const { people } = useAPI(index)
     const [isLoading, setIsLoading] = useState(true);
 
+    const containerRef = useRef<HTMLDivElement>(null)
+
     useEffect(()=>{
         const timer = setTimeout(()=> {
             setIsLoading(false)
@@ -28,13 +30,30 @@ const BottomPartContent: React.FC<ContainerProps> = ({ index })=> {
         return () => clearTimeout(timer)
     }, [])
 
+    useEffect(()=>{
+        const container = containerRef.current
+        if (!container) return
+
+        const handleWheel = (event: WheelEvent) => {
+            event.preventDefault()
+            container.scrollBy({
+                left: event.deltaY < 0 ? -30 : 30,
+            })
+        }
+
+        container.addEventListener("wheel", handleWheel)
+        return () => {
+            container.removeEventListener("wheel",handleWheel)
+        }
+    },[people])
+
     if (isLoading) {
         return <Loader />
     }
 
     const NameAdjustment = (name : string) => {
-        if (name.length > 16) {
-            return name.substring(0,12) + '...'
+        if (name.length >= 14) {
+            return name.substring(0,10) + '...'
         }
 
         return name
@@ -49,28 +68,40 @@ const BottomPartContent: React.FC<ContainerProps> = ({ index })=> {
     }
 
     return (
-        <div style={{ display: 'flex'}}>
-            {people.map((person) =>(
-                <div style={{
-                    width: '112.5px',
-                    height: '150px',
+        <div
+            id='container'
+            ref={containerRef} 
+            style={{ 
+                display: 'flex',
+                overflowX: 'auto',
+                overflowY: 'hidden',
+            }}
+        >
+            {people.map((person, index) => (
+                <div key={index} style={{  // Usamos el índice como key
+                    maxWidth: '112.5px',
+                    width: 'calc(13vw)',
+                    height: '75%',
                     marginLeft: '7px',
                     marginRight: '7px',
                     justifyContent: 'center'
                 }}>
-                    <h5 style={{margin: '0'}}>
+                    <h5 style={{ margin: '0' }}>
                         {NameAdjustment(person.name)}
                     </h5>
-                    <h6 style={{margin: '0'}}>
+                    <h6 style={{ margin: '0' }}>
                         {RoleAdjustment(person.role)}
                     </h6>
-                    <img src={person.picture} 
+                    <img 
+                        src={person.picture} 
                         alt="Imagina una persona"
-                        height='150'/>
+                        height='150'
+                        className="pictureStyle"
+                    />
                 </div>
             ))}
         </div>
-    )
+    )    
 }
 
 export default BottomPart

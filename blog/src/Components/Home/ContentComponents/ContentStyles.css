@@ -32,3 +32,15 @@
     filter: drop-shadow(0 0 50mm rgb(365, 365, 365));
     z-index: 0;
 }
+
+.pictureStyle {
+    max-height: 100%;
+    height: calc(13vw);
+    max-width: 104.5px
+}
+
+@media (max-width: 959px) {
+    .pictureStyle {
+        height: calc(11vw);
+    }
+}

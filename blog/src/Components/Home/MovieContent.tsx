@@ -16,7 +16,7 @@ const MovieContent : React.FC<ContainerProps> = ({index}) => {
                 maxHeight: '508px',
                 height: 'calc(100vw / 1.78)',
                 maxWidth: '910px',
-                width: '100%',
+                width: '95vw',
                 display: 'flex',
                 flexDirection: 'column'
             }}

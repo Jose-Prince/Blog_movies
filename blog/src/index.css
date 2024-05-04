@@ -40,14 +40,6 @@ h1 {
   text-align: start;
 }
 
-@media (max-width: 959px) {
-  h1 {
-    font-size: 4.0vw;
-    margin-bottom: 1.8vw;
-  }
-}
-
-
 p {
   margin: 0;
   font-size: 18.4px;
@@ -60,10 +52,16 @@ p {
   p {
     font-size: 1.87vw;
   }
-}
-
-h4 {
-  margin: 0;
+  h1 {
+    font-size: 4.0vw;
+    margin-bottom: 1.8vw;
+  }
+  h6 {
+    font-size: 1.7vw;
+  }
+  h5 {
+    font-size: 1.9vw;
+  }
 }
 
 button {
