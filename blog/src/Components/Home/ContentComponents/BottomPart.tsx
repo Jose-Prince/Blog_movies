@@ -78,7 +78,7 @@ const BottomPartContent: React.FC<ContainerProps> = ({ index })=> {
             }}
         >
             {people.map((person, index) => (
-                <div key={index} style={{  // Usamos el índice como key
+                <div key={index} style={{  
                     maxWidth: '112.5px',
                     width: 'calc(13vw)',
                     height: '75%',

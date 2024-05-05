@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { addMovie, getAdmin, obtainMovies, deleteMovie, obtainMoviesContent, modifyMovie, addPerson, getPeople} from "../BackEnd/Controller/Controller";
 
-function useAPI(id : number) {
+function useAPI(id : number | null) {
     const [movies, setMovies] = useState([])
     const [movieContent, setMovieContent] = useState({
         id: 0,
@@ -25,13 +25,14 @@ function useAPI(id : number) {
                 setAdmin(adminData)
 
                 const ids = moviesData.map(element => element.id)
-
-                if (id < moviesData.length){
-                    const movieContentData = await obtainMoviesContent(ids[id])
-                    setMovieContent(movieContentData)
-
-                    const peopleData = await getPeople(ids[id])
-                    setPeople(peopleData)
+                if (id != null){
+                    if (id < moviesData.length){
+                        const movieContentData = await obtainMoviesContent(ids[id])
+                        setMovieContent(movieContentData)
+    
+                        const peopleData = await getPeople(ids[id])
+                        setPeople(peopleData)
+                    }
                 }
                 
             } catch (error) {
