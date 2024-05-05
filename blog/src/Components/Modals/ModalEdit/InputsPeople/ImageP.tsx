@@ -1,37 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import '../editStyles.css';
 
 interface ContainerProps { 
     imageP: string;
-    setImageP: (imageP: string) => void;
-    setImgBase64P: (imgBase64P: string) => void;
+    setImageP: (image: string) => void;
+    setImgBase64P: (imgBase64: string) => void;
 }
 
-const ImageP: React.FC<ContainerProps> = ({imageP, setImageP, setImgBase64P}) => {
+const Image: React.FC<ContainerProps> = ({imageP, setImageP, setImgBase64P}) => {
+    const [inputValue, setInputValue] = useState('');
 
-    const handleFileUpload = (event) => {
-        const file = event.target.files[0]
+    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => { // Se especifica el tipo de evento
+        const file = event.target.files?.[0]; // Se agrega la validación de nullish
         console.log('Archivo seleccionado:', file);
 
-        if (file) {
-            const reader = new FileReader()
+        if (file instanceof Blob) { // Verificamos si file es un Blob válido
+            const reader = new FileReader();
             reader.onload = () => {
                 if (reader.result) {
-                    console.log(reader.result.toString())
-                    setImageP(file.name)
-                    setImgBase64P(reader.result.toString())
+                    console.log(reader.result.toString());
+                    setImageP(file.name);
+                    setImgBase64P(reader.result.toString());
                 }
-            }
-            reader.readAsDataURL(file)
+            };
+            reader.readAsDataURL(file);
+        } else {
+            console.log('No se seleccionó ningún archivo.');
         }
 
-        const imageUrl = URL.createObjectURL(file)
-        console.log('URL de la imagen:',imageUrl)
-        
-    }
+        if (file) { // Agregamos la lógica adicional solo si file no es nulo
+            const imageUrl = URL.createObjectURL(file);
+            console.log('URL de la imagen:', imageUrl);
+        }
+    };
+
     const onChangeLink =  (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.target.value);
         setImageP(e.target.value);
         setImgBase64P(e.target.value);
+    };
+
+    const handleClick = () => {
+        setInputValue(imageP); // Establece el valor del input como el valor del placeholder al hacer clic
     };
 
     return (
@@ -43,7 +53,8 @@ const ImageP: React.FC<ContainerProps> = ({imageP, setImageP, setImgBase64P}) =>
                 className="inputText"
                 maxLength={255}
                 onChange={onChangeLink}
-                value={imageP}
+                onClick={handleClick} // Maneja el clic en el input
+                value={inputValue}
             ></input>   
             <div>
                 <input
@@ -57,4 +68,4 @@ const ImageP: React.FC<ContainerProps> = ({imageP, setImageP, setImgBase64P}) =>
     );
 };
 
-export default ImageP;
+export default Image;

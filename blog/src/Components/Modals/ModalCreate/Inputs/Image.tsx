@@ -1,39 +1,38 @@
-import React from "react"
-import '../modalStyle.css'
+import React from "react";
+import '../modalStyle.css';
 
 interface ContainerProps { 
-    image : string
-    setImage: (image: string) => void
-    setImgBase64: (imgBase64: string) => void
- }
+    image : string;
+    setImage: (image: string) => void;
+    setImgBase64: (imgBase64: string) => void;
+}
 
 const Image: React.FC<ContainerProps> = ({image, setImage, setImgBase64}) => {
 
-    const handleFileUpload = (event) => {
-        const file = event.target.files[0]
+    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0]; // Usamos el operador de opción (?) para manejar el caso en que event.target.files sea null
+        if (!file) return; // Salimos de la función si no hay archivo seleccionado
+    
         console.log('Archivo seleccionado:', file);
-
-        if (file) {
-            const reader = new FileReader()
-            reader.onload = () => {
-                if (reader.result) {
-                    console.log(reader.result.toString())
-                    setImage(file.name)
-                    setImgBase64(reader.result.toString())
-                }
+    
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (reader.result) {
+                console.log(reader.result.toString());
+                setImage(file.name);
+                setImgBase64(reader.result.toString());
             }
-            reader.readAsDataURL(file)
-        }
+        };
+        reader.readAsDataURL(file);
+    
+        const imageUrl = URL.createObjectURL(file);
+        console.log('URL de la imagen:', imageUrl);
+    };
 
-        const imageUrl = URL.createObjectURL(file)
-        console.log('URL de la imagen:',imageUrl)
-        
-    }
-
-    const onChangeLink =  (e) => {
-        setImage(e.target.value)
+    const onChangeLink =  (e: React.ChangeEvent<HTMLInputElement>) => {
+        setImage(e.target.value);
         setImgBase64(e.target.value);
-    }
+    };
 
 
     return (
@@ -55,7 +54,7 @@ const Image: React.FC<ContainerProps> = ({image, setImage, setImgBase64}) => {
                 ></input>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Image
+export default Image;

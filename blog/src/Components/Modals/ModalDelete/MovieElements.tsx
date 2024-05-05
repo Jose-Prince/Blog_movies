@@ -8,7 +8,7 @@ interface ContainerProps {
  }
 
 const MovieElements: React.FC<ContainerProps> = ({selectMovie, setSelectMovie}) => {
-    const { movies } = useAPI()
+    const { movies } = useAPI(null)
 
     return (
         <div className="displaymentMovies">

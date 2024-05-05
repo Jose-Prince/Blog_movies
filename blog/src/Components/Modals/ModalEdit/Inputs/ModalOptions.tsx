@@ -21,7 +21,7 @@ const ModalOptions: React.FC<ContainerProps> = ({
     index
 }) => {
 
-    const { modifyMovie } = useAPI()
+    const { modifyMovie } = useAPI(null)
 
     const handleClick = async () => {
         await modifyMovie(name,trailer,image,content, index)  

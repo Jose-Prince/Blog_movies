@@ -11,7 +11,7 @@ import useForm from '../Hooks/useForm'
 
 const Admin: React.FC = () => {
 
-    const { admin } = useAPI()
+    const { admin } = useAPI(null)
     
     const [isCreateOpen, setIsCreateOpen] = useState(false)
     const [isDeleteOpen, setIsDeleteOpen] = useState(false)

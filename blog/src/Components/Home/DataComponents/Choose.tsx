@@ -11,7 +11,7 @@ interface ContainerProps {
  }
 
 const Choose: React.FC<ContainerProps> = ({user, password,setNameUser, setData}) => {
-    const { admin } = useAPI()
+    const { admin } = useAPI(null)
 
     const handleClick = async (event: React.MouseEvent<HTMLAnchorElement>) => {
         event?.preventDefault()

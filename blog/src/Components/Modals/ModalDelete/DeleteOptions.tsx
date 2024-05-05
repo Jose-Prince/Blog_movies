@@ -8,9 +8,9 @@ interface ContainerProps {
 
 const DeleteOptions : React.FC<ContainerProps> = ({selectMovie, setIsDeleteOpen}) => {
 
-    const {movies, deleteMovie} = useAPI()
+    const {movies, deleteMovie} = useAPI(null)
 
-    const handleClickDelete = (event) => {
+    const handleClickDelete = (event: { preventDefault: () => void }) => {
         event.preventDefault()
         const movie = movies.find(objeto => objeto.title === selectMovie)
         if (movie != undefined)

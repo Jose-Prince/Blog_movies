@@ -29,7 +29,7 @@ const SecondRow: React.FC<ContainerProps> = ({
     const [timeoutId, setTimeoutId] = useState<number | null>(null)
     const [, setCursor] = useState(false)
     
-    const {movies} = useAPI()
+    const {movies} = useAPI(null)
     
     useEffect(() => {
         const mouseMove = (e: { clientX: number; clientY: number }) => {
@@ -60,7 +60,7 @@ const SecondRow: React.FC<ContainerProps> = ({
     }
     
     const hybridClick = useDoubleClick(
-        undefined,
+        () => console.log(''),
         handleOneClick,
         undefined,
         startLoading

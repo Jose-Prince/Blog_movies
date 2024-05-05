@@ -25,7 +25,7 @@ const ModalOption: React.FC<ContainerProps> = ({
     index
 }) => {
 
-    const { addPerson } = useAPI()
+    const { addPerson } = useAPI(null)
 
     const handleClick = async () => {
         await addPerson(nameP,role, index,imageP)  

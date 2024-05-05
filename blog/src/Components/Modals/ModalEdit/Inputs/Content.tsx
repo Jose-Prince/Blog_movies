@@ -1,18 +1,18 @@
-import React, { useState } from "react"
-import '../editStyles.css'
+import React, { useState } from "react";
+import '../editStyles.css';
 
 interface ContainerProps { 
-    content : string
-    setContent: (content: string) => void
- }
+    content : string;
+    setContent: (content: string) => void;
+}
 
 const Content: React.FC<ContainerProps> = ({content, setContent}) => {
-    const [inputValue, setInputValue] = useState('')
+    const [inputValue, setInputValue] = useState('');
 
-    const handleChange = (e) => {
-        setInputValue(e.target.value)
-        setContent(e.target.value)
-    }
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setInputValue(e.target.value);
+        setContent(e.target.value);
+    };
 
     return (
         <div className="elementsDisplay">
@@ -25,7 +25,7 @@ const Content: React.FC<ContainerProps> = ({content, setContent}) => {
                 value={inputValue}
             ></textarea>  
         </div>
-    )
-}
+    );
+};
 
-export default Content
+export default Content;
