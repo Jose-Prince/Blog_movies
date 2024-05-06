@@ -72,15 +72,7 @@ const SecondRow: React.FC<ContainerProps> = ({
 
     const imageElements: JSX.Element[] = []
 
-    let leftp  = -3
-    let topp = 480
-
     for (let i = 0; i < 32; i++) {
-        if (i % 8 == 0 && i != 0) {
-            topp += 90
-            leftp = -3
-
-        }
 
         const handleCursor = () => {
             if (i != index && i < movies.length){
@@ -121,38 +113,36 @@ const SecondRow: React.FC<ContainerProps> = ({
 
 
         imageElements.push(
-            <div key={i}>
+            <div key={i} style={{ position: 'relative', width: '100%', height: '100%' }}>
                 <img 
                     src={imageSource}
                     style={{ 
-                        position: 'fixed',
-                        zIndex: '0',
-                        top: topp +'px',
-                        left: leftp + 'px',
-                        width: '246px', 
-                        margin: '0 0px', // Reducir el espacio entre las imágenes
+                        position: 'absolute',
+                        top: -34,
+                        left: -2.5,
+                        width: '105%', 
+                        zIndex: 0,
                     }} 
                 />
                 <button 
-                style={{
-                    position: 'fixed',
-                    height: '176px',
-                    width: '239px',
-                    top: topp +'px',
-                    left: leftp+3+'px',
-                    cursor: handleCursor(),
-                    zIndex: '1',
-                    backgroundColor: 'transparent',
-                    borderColor: 'transparent'
-                }}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                onClick={hybridClick}
+                    style={{
+                        position: 'absolute',
+                        top: -34,
+                        left: -5,
+                        width: '95%',
+                        height: '95%',
+                        cursor: handleCursor(),
+                        zIndex: 1,
+                        backgroundColor: 'transparent',
+                        borderColor: 'transparent'
+                    }}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={hybridClick}
                 >
                 </button>
             </div>
         )
-        leftp += 240
     }
 
     return <>
@@ -163,7 +153,10 @@ const SecondRow: React.FC<ContainerProps> = ({
             top: mousePosition.y -15,
             left: mousePosition.x-18,    
         }}/>}
-    {imageElements}</>
+        <div id='seatDisplayment'>
+            {imageElements}
+        </div>
+    </>
 }
 
 export default SecondRow

@@ -1,5 +1,6 @@
 .admin {
     height: 100%;
     display: grid;
-    grid-template-rows: 3% 53% 37% 3%;
+    grid-template-rows: 3% 53% 41% 3%;
+    overflow: hidden;
 }

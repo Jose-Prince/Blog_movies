@@ -1,6 +1,6 @@
 .buttonsDesign {
     height: 93%;
-    width: 99.7%;
+    width: 99.9%;
     background-color: black;
     border: 1px solid #ffffff;
     display: flex;
@@ -36,3 +36,17 @@
     animation: l3 1s infinite linear;
   }
   @keyframes l3 {to{transform: rotate(1turn)}}
+
+  #seatDisplayment {
+    height: 99.6%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: (4, 1fr);
+}
+
+@media (max-width: 500px) {
+    #seatDisplayment {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: (8, 1fr);
+    }    
+}
