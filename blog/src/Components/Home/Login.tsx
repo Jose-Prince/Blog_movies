@@ -48,7 +48,9 @@ const Login: React.FC<ContainerProps> = () => {
                     id='logButton'
                     style={{
                         color: onHover ? "blue" : "white",
-                        border: '1px solid '+color
+                        border: '1px solid '+color,
+                        fontSize: '16px',
+                        textAlign: 'center'
                 }}
                     onClick={() => setData(true)}
                 >Escoger nombre</p>

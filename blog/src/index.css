@@ -40,6 +40,10 @@ h1 {
   text-align: start;
 }
 
+h4 {
+  margin: 0;
+}
+
 p {
   margin: 0;
   font-size: 18.4px;
