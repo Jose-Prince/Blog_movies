@@ -88,3 +88,17 @@
     background-color: black;
     filter: drop-shadow(0 0 50mm rgb(365, 365, 365)) 
 }
+
+#seatDisplayment {
+    height: 99.6%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: (4, 1fr);
+}
+
+@media (max-width: 500px) {
+    #seatDisplayment {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: (8, 1fr);
+    }    
+}

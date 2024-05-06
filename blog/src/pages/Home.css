@@ -2,4 +2,6 @@
     height: 100%;
     display: grid;
     grid-template-rows: 3% 57% 40%;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
