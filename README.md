@@ -25,3 +25,8 @@ In the admin view you can do the following things:
 - Delete movies
 - Modify movies by double clicking in the seat of the movie
 - Add people related to a movie
+
+## Possible future fixes
+- Update the React Suspense use, it isn't implemented the right way.
+- Migrate the songs to the database, they are burned in the code and in the PlayMusic custom hook.
+- Make the lazy loading responsive.
