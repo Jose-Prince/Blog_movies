@@ -2,10 +2,11 @@
 
 This is a blog created to see which are the best movies of all times. The project was done in React JS using Vite. 
 
-##How it works?
+## How it works?
 
+The blog uses the Restfull API: [Blog_API](https://github.com/Jose-Prince/Blog_API)
 
-##Views
+## Views
 The blog has two main views the home and the admin view.
 
 In the home view you can do the following things:
@@ -18,3 +19,4 @@ In the admin view you can do the following things:
 - Create new movies for the blog
 - Delete movies
 - Modify movies by double clicking in the seat of the movie
+- Add people related to a movie
