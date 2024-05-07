@@ -6,7 +6,7 @@ This is a blog created to see which are the best movies of all times. The projec
 
 The blog uses the Restfull API: [Blog_API](https://github.com/Jose-Prince/Blog_API). The API is already runnig on a server so it isn't neccessary to configure the API as it says in the Readme section of the API. 
 
-For running the blog in developvers mode use the following command:
+For running the blog in developvers mode, use the following command:
 ```
 npm run dev
 ```
