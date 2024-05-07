@@ -56,18 +56,6 @@ const SecondRow: React.FC<ContainerProps> = ({
         }
     }
 
-    const handleOneClick = () => {
-        setScreenContent(false)
-        setPlayVideo(true)
-    }
-    
-    const hybridClick = useDoubleClick(
-        () => setIsEditOpen(true),
-        handleOneClick,
-        undefined,
-        startLoading
-    )
-    
     const imageSource: string = Seat
 
     const imageElements: JSX.Element[] = []
@@ -83,6 +71,26 @@ const SecondRow: React.FC<ContainerProps> = ({
                 return 'pointer'
             }
         }
+
+        const handleOneClick = () => {
+            if (i === index) {
+                setScreenContent(false)
+                setPlayVideo(true)
+            }
+        }
+
+        const handleDoubleClick = () => {
+            if (i === index) {
+                setIsEditOpen(true)
+            }
+        }
+        
+        const hybridClick = useDoubleClick(
+            handleDoubleClick,
+            handleOneClick,
+            undefined,
+            startLoading
+        )
     
 
         const handleMouseEnter = () => {

@@ -54,24 +54,13 @@ const SecondRow: React.FC<ContainerProps> = ({
         }
     }
 
-    const handleOneClick = () => {
-        setScreenContent(false)
-        setPlayVideo(true)
-    }
     
-    const hybridClick = useDoubleClick(
-        () => console.log(''),
-        handleOneClick,
-        undefined,
-        startLoading
-    )
-
     const imageSource: string = Seat
-
+    
     const imageElements: JSX.Element[] = []
-
+    
     for (let i = 0; i < 32; i++) {
-
+        
         const handleCursor = () => {
             if (i != index && i < movies.length){
                 return 'none'
@@ -81,7 +70,20 @@ const SecondRow: React.FC<ContainerProps> = ({
                 return 'pointer'
             }
         }
-    
+        
+        const handleOneClick = () => {
+            if (i === index) {
+                setScreenContent(false)
+                setPlayVideo(true)
+            }
+        }
+        
+        const hybridClick = useDoubleClick(
+            () => console.log(''),
+            handleOneClick,
+            undefined,
+            startLoading
+        )
 
         const handleMouseEnter = () => {
             if (i != index && i < movies.length) {
